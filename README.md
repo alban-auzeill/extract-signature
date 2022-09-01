@@ -4,6 +4,7 @@
 
 *  Java >= 17
 *  Maven
+* jq (command-line json processor)
 
 ## Input data to convert
 
