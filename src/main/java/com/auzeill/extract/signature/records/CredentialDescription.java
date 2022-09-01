@@ -48,10 +48,10 @@ public record CredentialDescription(
     if (!methodName.matches("\\w+")) {
       throw new IllegalArgumentException("Invalid method name in '" + methodName + "' from: " + className + "#" + signature);
     }
-    List<String> arguments = Arrays.stream(signature.substring(openParenthesis + 1, closeParenthesis).trim().split(" *, *"))
+    List<String> arguments = Arrays.stream(signature.substring(openParenthesis + 1, closeParenthesis).trim().split(" *+, *+"))
       .map(arg -> arg.indexOf(' ') != -1 ? arg.substring(0, arg.indexOf(' ')) : arg)
       .toList();
-    List<Integer> argumentIndexes = Arrays.stream(descArray.get(8).getAsString().split(" *, *"))
+    List<Integer> argumentIndexes = Arrays.stream(descArray.get(8).getAsString().split(" *+, *+"))
       .map(Integer::parseInt).toList();
     for (int argumentIndex : argumentIndexes) {
       if (argumentIndex > arguments.size()) {
